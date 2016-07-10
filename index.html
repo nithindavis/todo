@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <title>A simple TODO</title>
+  </head>
+  <body>
+
+    <div class="container">
+      <br>
+      <h1>
+        मेरी रेल गाडी वातानुकूलित है
+      </h1>
+
+      <br><br><br>
+
+      <div class="input-group input-group-lg">
+        <input type="text" class="form-control" placeholder="Enter TODO item" aria-describedby="sizing-addon1">
+        <div class="input-group-btn">
+        <!-- Buttons -->
+        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></button>
+        <button type="button" class="btn btn-danger">DO</button>
+        </div>
+      </div>
+
+<br><br>
+
+
+      <h4>TODO</h4>
+        <ul id='list_todo' class="list-group">
+          <li class="list-group-item">Fill form 16 ITR stuff<span style="margin-left:300px" class="label label-danger">Due on: 20th July</span></li>
+          <li class="list-group-item">Buy a mouse<span style="margin-left:100px" class="label label-danger">Due on: 10th July</span></li>
+          <li class="list-group-item">Complete Mobile Place Mocks<br><span style="margin-left:0px" class="label label-default"> - - No Date Assigned - - </span></li>
+          <li class="list-group-item">Learn HTML<span style="margin-left:800px" class="label label-danger">Due on: 26th November</span></li>
+          <li class="list-group-item">Learn Python<span style="margin-left:700px" class="label label-danger">Due on: 10th October/span></li>
+        </ul>
+
+      <br><br>
+
+      <h4>Completed</h4>
+        <ul class="list-group">
+          <li class="list-group-item">Cras justo odio<span class="label label-success">2:26 PM</span></li>
+          <li class="list-group-item">Dapibus ac facilisis in<span class="label label-success">2:26 PM</span></li>
+          <li class="list-group-item">Morbi leo risus<span class="label label-success">2:26 PM</span></li>
+          <li class="list-group-item">Porta ac consectetur ac<span class="label label-success">2:26 PM</span></li>
+          <li class="list-group-item">Vestibulum at eros<span class="label label-success">2:26 PM</span></li>
+        </ul>
+
+    </div><!-- /.container -->
+
+<script type="text/javascript">
+  $(function() {
+
+    // send a request to server and get the data
+    $.ajax('/tasks/todo').done(function (result) {
+      for(var i = 0; i < result['todo'].length; i++) {
+        $('#list_todo').prepend('<li class="list-group-item">' + result[i].text + '<span style="margin-left:300px" class="label label-danger"></li>')
+      }
+      // $('#list_todo').prepend(result.text);
+    })
+
+  });
+</script>
+</body>
+</html>
